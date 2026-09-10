@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuvraj Sharda | Portfolio</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+        a { text-decoration: none; color: var(--primary); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Navbar */
+        nav { background: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--dark); }
+        .nav-links a { margin-left: 20px; font-weight: 500; color: var(--gray); transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { display: flex; align-items: center; justify-content: space-between; padding: 100px 0; gap: 40px; flex-wrap: wrap-reverse; }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-text h1 { font-size: 3rem; margin-bottom: 10px; color: var(--dark); }
+        .hero-text h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 20px; font-weight: 500; }
+        .hero-text p { font-size: 1.1rem; color: var(--gray); margin-bottom: 30px; }
+        .btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: white; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
+        .btn:hover { background: #1d4ed8; color: white; }
+        .hero-img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+        /* Sections */
+        section { padding: 80px 0; }
+        .section-title { font-size: 2.2rem; margin-bottom: 40px; text-align: center; color: var(--dark); }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--primary); margin: 10px auto 0; border-radius: 2px; }
+
+        /* Skills */
+        .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .skill-tag { background: white; padding: 10px 20px; border-radius: 50px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); font-weight: 500; color: var(--dark); border: 1px solid #e2e8f0; }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--dark); }
+        .project-card p { color: var(--gray); margin-bottom: 20px; font-size: 0.95rem; }
+
+        /* Timeline (Education & Training) */
+        .timeline-item { background: white; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--primary); }
+        .timeline-item h4 { font-size: 1.2rem; margin-bottom: 5px; }
+        .timeline-date { color: var(--primary); font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; display: block; }
+        .timeline-item p { color: var(--gray); font-size: 0.95rem; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 40px 0; text-align: center; }
+        .social-links { margin: 20px 0; }
+        .social-links a { color: white; margin: 0 15px; font-size: 1.1rem; }
+        .social-links a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero { justify-content: center; text-align: center; }
+            .nav-links { display: none; /* Add a hamburger menu for full mobile support */ }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">YS.</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container hero">
+        <div class="hero-text">
+            <h1>Hi, I'm Yuvraj Sharda</h1>
+            <h2>AI/ML & IoT Enthusiast</h2>
+            <p>A motivated Computer Science Engineering student focused on solving real-world problems through data-driven predictive modeling and hardware sensor integration.</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+        <img src="IMG_9877.JPG" alt="Yuvraj Sharda" class="hero-img">
+    </header>
+
+    <section id="skills" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Artificial Intelligence</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">IoT</span>
+                <span class="skill-tag">Pandas</span>
+                <span class="skill-tag">NumPy</span>
+                <span class="skill-tag">Streamlit</span>
+                <span class="skill-tag">Scikit-learn</span>
+                <span class="skill-tag">Matplotlib</span>
+                <span class="skill-tag">Git & GitHub</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Air Monitoring System</h3>
+                    <p>Developed a real-time air quality monitoring system using IoT sensors (ESP32) and Python. Enabled continuous environmental tracking and pushed data to a live cloud dashboard.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Student Placement Predictor</h3>
+                    <p>Built a supervised machine learning model to predict placement chances. Cleaned historical student data using Pandas, achieving an 85% accuracy with Random Forest classifiers.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Smartphone Price Predictor</h3>
+                    <p>Designed a regression model to predict smartphone prices based on features. Handled missing values and applied feature engineering to improve the R-squared value to 0.88.</p>
+                </div>
+                <div class="project-card">
+                    <h3>AI Chatbot</h3>
+                    <p>Developed an interactive chatbot using Streamlit to handle user queries efficiently. Utilized Natural Language Processing (NLP) concepts to parse intent and deliver dynamic responses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Education & Training</h2>
+            <div class="timeline-item">
+                <h4>Bachelor of Technology (Computer Science Engineering)</h4>
+                <span class="timeline-date">2023 - 2027 (Pursuing)</span>
+                <p>Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib. <br>Relevant Coursework: Data Structures & Algorithms, DBMS, Operating Systems, Artificial Intelligence.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Industrial Training in Python, AI & Machine Learning</h4>
+                <span class="timeline-date">45 Days Program</span>
+                <p>Future Finders, Mohali. Gained hands-on experience in building machine learning models and deploying AI solutions.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Senior Secondary (12th)</h4>
+                <span class="timeline-date">Passed in 2023 (83%)</span>
+                <p>Government Boys School, Nabha.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <div class="social-links">
+                <a href="mailto:yuvrajsharda5681@gmail.com">Email</a>
+                <a href="https://linkedin.com/in/yuvraj-sharda" target="_blank">LinkedIn</a>
+                <a href="https://github.com/yuvrajsharda11" target="_blank">GitHub</a>
+            </div>
+            <p>&copy; 2024 Yuvraj Sharda. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
