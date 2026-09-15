@@ -5,66 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuvraj Sharda | Portfolio</title>
     <style>
+        /* CSS Variables for Light Mode */
         :root {
             --primary: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
+            --primary-hover: #1d4ed8;
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
         }
+
+        /* CSS Variables for Dark Mode */
+        [data-theme="dark"] {
+            --primary: #3b82f6;
+            --primary-hover: #60a5fa;
+            --bg-body: #0f172a;
+            --bg-surface: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --border-color: #334155;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.3);
+            --shadow-md: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        a { text-decoration: none; color: var(--primary); }
+        
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--bg-body); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        a { text-decoration: none; color: var(--primary); transition: var(--transition); }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
         /* Navbar */
-        nav { background: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        nav { 
+            background: var(--bg-surface); 
+            padding: 20px 0; 
+            box-shadow: var(--shadow-sm); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            transition: var(--transition);
+        }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--dark); }
-        .nav-links a { margin-left: 20px; font-weight: 500; color: var(--gray); transition: color 0.3s; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--text-main); }
+        
+        .nav-links { display: flex; align-items: center; gap: 25px; }
+        .nav-links a { font-weight: 500; color: var(--text-muted); }
         .nav-links a:hover { color: var(--primary); }
+        
+        /* Theme Toggle Button */
+        .theme-btn {
+            background: none;
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .theme-btn:hover { background: var(--border-color); }
 
         /* Hero Section */
         .hero { display: flex; align-items: center; justify-content: space-between; padding: 100px 0; gap: 40px; flex-wrap: wrap-reverse; }
         .hero-text { flex: 1; min-width: 300px; }
-        .hero-text h1 { font-size: 3rem; margin-bottom: 10px; color: var(--dark); }
+        .hero-text h1 { font-size: 3rem; margin-bottom: 10px; color: var(--text-main); }
         .hero-text h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 20px; font-weight: 500; }
-        .hero-text p { font-size: 1.1rem; color: var(--gray); margin-bottom: 30px; }
-        .btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: white; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
-        .btn:hover { background: #1d4ed8; color: white; }
-        .hero-img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .hero-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; }
+        
+        /* Buttons */
+        .btn { 
+            display: inline-block; 
+            padding: 12px 30px; 
+            background: var(--primary); 
+            color: white !important; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            border: none;
+            cursor: pointer;
+            transition: var(--transition); 
+        }
+        .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary) !important;
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover { background: var(--primary); color: white !important; }
+
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; }
+
+        .hero-img { 
+            width: 300px; height: 300px; object-fit: cover; 
+            border-radius: 50%; border: 5px solid var(--bg-surface); 
+            box-shadow: var(--shadow-md); 
+        }
 
         /* Sections */
         section { padding: 80px 0; }
-        .section-title { font-size: 2.2rem; margin-bottom: 40px; text-align: center; color: var(--dark); }
+        .bg-alt { background: var(--bg-surface); }
+        .section-title { font-size: 2.2rem; margin-bottom: 40px; text-align: center; color: var(--text-main); }
         .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--primary); margin: 10px auto 0; border-radius: 2px; }
 
         /* Skills */
         .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .skill-tag { background: white; padding: 10px 20px; border-radius: 50px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); font-weight: 500; color: var(--dark); border: 1px solid #e2e8f0; }
+        .skill-tag { 
+            background: var(--bg-body); padding: 10px 20px; border-radius: 50px; 
+            box-shadow: var(--shadow-sm); font-weight: 500; color: var(--text-main); 
+            border: 1px solid var(--border-color); transition: var(--transition);
+        }
+        .skill-tag:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
 
         /* Projects */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: transform 0.3s; }
-        .project-card:hover { transform: translateY(-5px); }
-        .project-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--dark); }
-        .project-card p { color: var(--gray); margin-bottom: 20px; font-size: 0.95rem; }
+        .project-card { 
+            background: var(--bg-surface); padding: 30px; border-radius: 12px; 
+            box-shadow: var(--shadow-md); transition: var(--transition); border: 1px solid var(--border-color);
+            display: flex; flex-direction: column;
+        }
+        .project-card:hover { transform: translateY(-8px); border-color: var(--primary); }
+        .project-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-main); }
+        .project-card p { color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; flex-grow: 1; }
+        .project-links { display: flex; gap: 10px; }
+        .project-links a { padding: 8px 16px; font-size: 0.9rem; border-radius: 4px; }
 
         /* Timeline (Education & Training) */
-        .timeline-item { background: white; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--primary); }
-        .timeline-item h4 { font-size: 1.2rem; margin-bottom: 5px; }
+        .timeline-item { 
+            background: var(--bg-body); padding: 25px; border-radius: 8px; margin-bottom: 20px; 
+            box-shadow: var(--shadow-sm); border-left: 5px solid var(--primary); 
+            border: 1px solid var(--border-color); border-left-width: 5px;
+        }
+        .timeline-item h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--text-main); }
         .timeline-date { color: var(--primary); font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; display: block; }
-        .timeline-item p { color: var(--gray); font-size: 0.95rem; }
+        .timeline-item p { color: var(--text-muted); font-size: 0.95rem; }
 
         /* Footer */
-        footer { background: var(--dark); color: white; padding: 40px 0; text-align: center; }
+        footer { background: #0f172a; color: white; padding: 40px 0; text-align: center; }
         .social-links { margin: 20px 0; }
-        .social-links a { color: white; margin: 0 15px; font-size: 1.1rem; }
-        .social-links a:hover { color: var(--primary); }
+        .social-links a { color: #94a3b8; margin: 0 15px; font-size: 1.1rem; transition: var(--transition); }
+        .social-links a:hover { color: white; }
+
+        /* Mobile Menu */
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); background: none; border: none; }
 
         @media (max-width: 768px) {
-            .hero-text h1 { font-size: 2.5rem; }
             .hero { justify-content: center; text-align: center; }
-            .nav-links { display: none; /* Add a hamburger menu for full mobile support */ }
+            .btn-group { justify-content: center; }
+            .menu-toggle { display: block; }
+            .nav-links { 
+                display: none; width: 100%; flex-direction: column; position: absolute; 
+                top: 70px; left: 0; background: var(--bg-surface); padding: 20px 0; 
+                box-shadow: var(--shadow-md); 
+            }
+            .nav-links.active { display: flex; }
         }
     </style>
 </head>
@@ -73,26 +176,31 @@
     <nav>
         <div class="container">
             <a href="#" class="logo">YS.</a>
-            <div class="nav-links">
+            <button class="menu-toggle" id="mobile-menu-btn">☰</button>
+            <div class="nav-links" id="nav-links">
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
                 <a href="#education">Education</a>
+                <button class="theme-btn" id="theme-toggle">🌙 Dark Mode</button>
             </div>
         </div>
     </nav>
 
-    <header class="container hero">
+    <header class="container hero" id="about">
         <div class="hero-text">
             <h1>Hi, I'm Yuvraj Sharda</h1>
             <h2>AI/ML & IoT Enthusiast</h2>
             <p>A motivated Computer Science Engineering student focused on solving real-world problems through data-driven predictive modeling and hardware sensor integration.</p>
-            <a href="#projects" class="btn">View My Work</a>
+            <div class="btn-group">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="Resume.pdf" class="btn btn-outline" target="_blank">View Resume</a>
+            </div>
         </div>
         <img src="IMG_9877.JPG" alt="Yuvraj Sharda" class="hero-img">
     </header>
 
-    <section id="skills" style="background: white;">
+    <section id="skills" class="bg-alt">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
@@ -119,24 +227,36 @@
                 <div class="project-card">
                     <h3>Air Monitoring System</h3>
                     <p>Developed a real-time air quality monitoring system using IoT sensors (ESP32) and Python. Enabled continuous environmental tracking and pushed data to a live cloud dashboard.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yuvrajsharda11" target="_blank" class="btn btn-outline">GitHub Repo</a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <h3>Student Placement Predictor</h3>
                     <p>Built a supervised machine learning model to predict placement chances. Cleaned historical student data using Pandas, achieving an 85% accuracy with Random Forest classifiers.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yuvrajsharda11" target="_blank" class="btn btn-outline">GitHub Repo</a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <h3>Smartphone Price Predictor</h3>
                     <p>Designed a regression model to predict smartphone prices based on features. Handled missing values and applied feature engineering to improve the R-squared value to 0.88.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yuvrajsharda11" target="_blank" class="btn btn-outline">GitHub Repo</a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <h3>AI Chatbot</h3>
                     <p>Developed an interactive chatbot using Streamlit to handle user queries efficiently. Utilized Natural Language Processing (NLP) concepts to parse intent and deliver dynamic responses.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yuvrajsharda11" target="_blank" class="btn btn-outline">GitHub Repo</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="education" style="background: white;">
+    <section id="education" class="bg-alt">
         <div class="container">
             <h2 class="section-title">Education & Training</h2>
             <div class="timeline-item">
@@ -159,15 +279,49 @@
 
     <footer>
         <div class="container">
-            <h2>Let's Connect</h2>
+            <h2 style="margin-bottom: 10px;">Let's Connect</h2>
             <div class="social-links">
                 <a href="mailto:yuvrajsharda5681@gmail.com">Email</a>
                 <a href="https://linkedin.com/in/yuvraj-sharda" target="_blank">LinkedIn</a>
                 <a href="https://github.com/yuvrajsharda11" target="_blank">GitHub</a>
             </div>
-            <p>&copy; 2024 Yuvraj Sharda. All rights reserved.</p>
+            <p style="color: #64748b; font-size: 0.9rem;">&copy; 2024 Yuvraj Sharda. All rights reserved.</p>
         </div>
     </footer>
 
+    <script>
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Theme Selection (Light/Dark Mode)
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
+
+        // Apply saved theme on load
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggleBtn.textContent = '☀️ Light Mode';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.textContent = '🌙 Dark Mode';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.textContent = '☀️ Light Mode';
+            }
+        });
+    </script>
 </body>
 </html>
